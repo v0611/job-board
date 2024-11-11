@@ -28,6 +28,7 @@ dependencies {
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '3.3.5'
 	implementation group: 'org.postgresql', name: 'postgresql', version: '42.7.4'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation group: 'software.amazon.awssdk', name: 's3', version: '2.29.9'
 
 	testImplementation group: 'org.springframework.boot', name: 'spring-boot-test', version: '3.3.5'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
