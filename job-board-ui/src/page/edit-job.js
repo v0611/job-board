@@ -2,20 +2,20 @@ export const EditJob = () => {
   return (
     <div className="container">
       <form>
-        <div class="form-group">
+        <div className="form-group">
           <label>Job Title</label>
-          <input class="form-control" placeholder="Enter Job Title" />
+          <input className="form-control" placeholder="Enter Job Title" />
         </div>
 
-        <div class="form-group">
+        <div className="form-group">
           <label>Hourly Rate</label>
-          <input type="number" class="form-control" placeholder="Hourly Rate" />
+          <input type="number" className="form-control" placeholder="Hourly Rate" />
         </div>
 
-        <div class="form-group">
+        <div className="form-group">
           <label for="exampleFormControlTextarea1">Job Description</label>
           <textarea
-            class="form-control"
+            className="form-control"
             id="exampleFormControlTextarea1"
             rows="3"
           ></textarea>
@@ -24,7 +24,7 @@ export const EditJob = () => {
         <button
           type="button"
           style={{ marginTop: "10px" }}
-          class="btn btn-primary"
+          className="btn btn-primary"
         >
           Submit
         </button>

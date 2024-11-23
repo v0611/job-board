@@ -25,17 +25,12 @@ const App = () => {
                   Add Job
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink className={"nav-link"} to="edit-job" end>
-                  Edit Job
-                </NavLink>
-              </li>
             </ul>
           </div>
         </nav>
         <Routes>
           <Route index path="/" element={<HomePage />} />
-          <Route path="edit-job" element={<EditJob />} />
+          <Route path="edit-job/:jobId" element={<EditJob />} />
           <Route path="add-job" element={<AddJob />} />
         </Routes>
       </BrowserRouter>
