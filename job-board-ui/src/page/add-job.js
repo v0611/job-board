@@ -10,12 +10,16 @@ export const AddJob = () => {
 
   const onSubmit = useCallback(async () => {
     const response = await addJob({
-      jobTitle: jobTitle.current.value,
-      hourlyRate: Number(hourlyRate.current.value),
-      jobDescription: jobDescription.current.value,
-    });
-
-    navigate("/");
+      title: jobTitle.current.value,
+      salary: Number(hourlyRate.current.value),
+      description: jobDescription.current.value,
+    })
+      .then(() => {
+        navigate("/");
+      })
+      .catch((e) => {
+        // Add error handling
+      });
   }, [jobTitle, hourlyRate, jobDescription]);
 
   return (

@@ -13,19 +13,26 @@ const App = () => {
     <React.StrictMode>
       <BrowserRouter>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <NavLink to={"/"} className={"navbar-brand"}>
-            {" "}
-            Home
-          </NavLink>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mr-auto">
-              <li className={`nav-item active`}>
-                <NavLink className={"nav-link"} to="add-job" end>
-                  Add Job
-                </NavLink>
-              </li>
-            </ul>
-          </div>
+          <ul
+            className="navbar-nav"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              flexDirection: "row",
+            }}
+          >
+            <li className="nav-item">
+              <NavLink to={"/"} className={"navbar-brand"}>
+                {" "}
+                Home
+              </NavLink>
+            </li>
+            <li className={`nav-item`}>
+              <NavLink className={"nav-link"} to="add-job" end>
+                Add Job
+              </NavLink>
+            </li>
+          </ul>
         </nav>
         <Routes>
           <Route index path="/" element={<HomePage />} />
