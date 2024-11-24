@@ -38,4 +38,15 @@ export const editJob = async (jobId, payload) => {
 
   return response.data;
 };
-export const applyForJob = (jobId, payload) => {};
+export const applyForJob = async (jobId, payload) => {
+  const formData = new FormData();
+  formData.append("file", payload.file);
+  formData.append("name", payload.name);
+  formData.append("jobId", jobId);
+
+  const response = await axios.postForm("/api/jobs/apply", formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
+
+  return response.data;
+};

@@ -24,6 +24,7 @@ export const HomePage = () => {
             jobTitle={job.title}
             jobDescription={job.description}
             salary={job.salary}
+            applicants={job.applicants}
           />
         );
       })}

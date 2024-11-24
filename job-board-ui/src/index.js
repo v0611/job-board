@@ -5,6 +5,7 @@ import { HomePage } from "./page/home";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { EditJob } from "./page/edit-job";
 import { AddJob } from "./page/add-job";
+import { ApplyPage } from "./page/apply-job";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -38,6 +39,7 @@ const App = () => {
           <Route index path="/" element={<HomePage />} />
           <Route path="edit-job/:jobId" element={<EditJob />} />
           <Route path="add-job" element={<AddJob />} />
+          <Route path="apply/:jobId" element={<ApplyPage />} />
         </Routes>
       </BrowserRouter>
     </React.StrictMode>

@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 
 import java.time.LocalDateTime;
 
@@ -17,6 +18,8 @@ public class Job {
     private Integer salary;
     private String location;
     private LocalDateTime postedDate;
+    @Transient
+    private int applicants;
 
     public void merge(Job job){
         if(job.description != null){
@@ -88,5 +91,13 @@ public class Job {
     public Job setPostedDate(LocalDateTime postedDate) {
         this.postedDate = postedDate;
         return this;
+    }
+
+    public int getApplicants() {
+        return applicants;
+    }
+
+    public void setApplicants(int applicants) {
+        this.applicants = applicants;
     }
 }

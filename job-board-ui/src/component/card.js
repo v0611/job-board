@@ -18,6 +18,7 @@ export const JobCard = ({
   jobTitle,
   salary,
   jobDescription,
+  applicants,
   style,
 } = {}) => {
   const navigate = useNavigate();
@@ -29,6 +30,10 @@ export const JobCard = ({
 
   const onEditJob = useCallback(() => {
     navigate(`/edit-job/${jobId}`);
+  }, [jobId, navigate]);
+
+  const onApply = useCallback(() => {
+    navigate(`apply/${jobId}`);
   }, [jobId, navigate]);
 
   return (
@@ -61,6 +66,11 @@ export const JobCard = ({
           name="Job Description"
           value={jobDescription}
         />
+        <JobCardEntry
+          style={{ marginRight: "10px" }}
+          name="Number of Applicants"
+          value={applicants}
+        />
         <div
           style={{
             display: "flex",
@@ -69,6 +79,7 @@ export const JobCard = ({
           }}
         >
           <button
+            onClick={onApply}
             className="btn btn-primary"
             style={{ height: "40px", marginRight: "5px" }}
           >
