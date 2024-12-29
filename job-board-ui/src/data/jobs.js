@@ -38,6 +38,7 @@ export const editJob = async (jobId, payload) => {
 
   return response.data;
 };
+
 export const applyForJob = async (jobId, payload) => {
   const formData = new FormData();
   formData.append("file", payload.file);
@@ -49,4 +50,23 @@ export const applyForJob = async (jobId, payload) => {
   });
 
   return response.data;
+};
+
+export const getJobApplicants = async (jobId) => {
+  const response = await axios.get(`/api/jobs/${jobId}/applicants`);
+  return response.data;
+};
+
+export const downloadApplication = async (jobId, applicationId) => {
+  await axios
+    .get(`/api/jobs/${jobId}/applicants/${applicationId}/resume`, {
+      responseType: "blob",
+    })
+    .then((response) => {
+      window.open(
+        URL.createObjectURL(
+          new Blob([response.data], { type: "application/pdf" })
+        )
+      );
+    });
 };

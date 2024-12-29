@@ -36,6 +36,11 @@ export const JobCard = ({
     navigate(`apply/${jobId}`);
   }, [jobId, navigate]);
 
+
+  const onViewApplicants = useCallback(() => {
+    navigate(`jobs/${jobId}/applicants`);
+  }, [jobId, navigate]);
+
   return (
     <div style={{ ...style }} className="card">
       <div
@@ -98,6 +103,13 @@ export const JobCard = ({
             style={{ height: "40px", marginRight: "5px" }}
           >
             Delete
+          </button>
+          <button
+            onClick={onViewApplicants}
+            className="btn btn-primary"
+            style={{ height: "40px", marginRight: "5px" }}
+          >
+            View Applicants
           </button>
         </div>
       </div>

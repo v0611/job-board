@@ -5,6 +5,7 @@ import com.jobboard.service.entity.JobApplication;
 import com.jobboard.service.repository.ApplicationRepository;
 import com.jobboard.service.repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -69,10 +70,6 @@ public class JobController {
     public ResponseEntity<JobApplication> applyForJob(@RequestPart("name") String name,
             @RequestPart("jobId") String jobId, @RequestPart("file") MultipartFile file) {
 
-        System.out.println("Made it to handler");
-        System.out.println(jobId);
-        System.out.println(file);
-
         var isExistent = jobRepository.existsById(jobId);
         if (!isExistent)
             return ResponseEntity.notFound().build();
@@ -81,15 +78,33 @@ public class JobController {
 
         application.setName(name);
         application.setJobId(jobId);
-
         try {
             application.setFile(file.getBytes());
         } catch (IOException e) {
             return ResponseEntity.unprocessableEntity().build();
         }
 
-        application.setFile(null);
         return ResponseEntity.ok(applicationRepository.save(application));
+    }
+
+    @GetMapping("/api/jobs/{id}/applicants")
+    public ResponseEntity<List<JobApplication>> getJobApplicants(@PathVariable String id) {
+        if(id == null)
+            return ResponseEntity.notFound().build();
+        var isExistent = jobRepository.existsById(id);
+
+        if (!isExistent)
+            return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok(applicationRepository.getJobApplicants(id));
+    }
+
+    @GetMapping("/api/jobs/{jobId}/applicants/{applicantId}/resume")
+    public ResponseEntity<byte[]> getFile(@PathVariable String applicantId) {
+        var application = applicationRepository.getJobApplication(applicantId);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + application.getName() + "_resume.pdf" + "\"")
+                .body(application.getFile());
     }
 
 }
