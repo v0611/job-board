@@ -30,4 +30,3 @@ node_modules
 .gradle/*
 .idea
 bin
-build/
