@@ -8,5 +8,17 @@ services:
       - POSTGRES_USER=admin
     volumes:
       - postgres-data:/var/lib/postgresql/data
+  job-board-service:
+    depends_on:
+      - database
+    ports:
+      - "8080:8080"
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      POSTGRES_URL: "jdbc:postgresql://database:5432/jobboard"
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
 volumes:
   postgres-data:

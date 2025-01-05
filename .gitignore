@@ -25,7 +25,6 @@ replay_pid*
 .gradle/*
 .gradle
 .idea
-build
 node_modules
 .gitignore
 .gradle/*
