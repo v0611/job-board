@@ -8,8 +8,8 @@ export const getJobs = async () => {
 
 export const addJob = async (payload) => {
   const response = await axios.post("/api/jobs", {
-    title: payload.jobTitle,
-    description: payload.jobDescription,
+    title: payload.title,
+    description: payload.description,
     salary: payload.salary,
   });
 
