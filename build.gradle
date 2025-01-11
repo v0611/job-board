@@ -47,3 +47,9 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+
+task bundleProduction(type: Exec) {
+	commandLine 'sh', "./bundle-ui.sh"
+	commandLine 'sh', './gradlew', 'bootJar'
+}
